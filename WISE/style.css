@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  /*
+    * variables declared under this :root will be accessible to all the elements of the document
+    */
+
+  /** custom property or CSS variable **/
+  /** Global variables **/
+  --clr-greenish: #9ee86f;
+  --clr-dark-greenish: #173401;
+
+  --ff-roboto: "Roboto", sans-serif;
+  --ff-arimo: "Arimo", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font: inherit;
+  text-decoration: none;
+
+  color: inherit;
+}
+
+button {
+  all: unset;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  /** clamp(min, idle, max) **/
+  font-size: clamp(0.7rem, 2vw + 0.1rem, 1.2rem);
+  background-color: var(--clr-greenish);
+  position: relative;
+}
+
+.container {
+  display: grid;
+  row-gap: 1em;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 60rem;
+  padding-inline: 1em;
+
+  /** margin-left + margin-right **/
+  margin-inline: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1em;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.header ol {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+  font-family: var(--ff-roboto);
+  font-size: 0.8em;
+}
+
+.header ol li {
+  position: relative;
+}
+
+.header ol li:not(.active)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8%;
+  height: 0.1em;
+  background-color: var(--clr-dark-greenish);
+  border-radius: 100vw;
+  scale: 0;
+  transform-origin: center;
+  transition: scale 200ms ease-in;
+}
+
+.header ol li:hover:not(.active)::after {
+  scale: 1;
+}
+
+.header ol li.active,
+.btn-primary {
+  color: var(--clr-greenish);
+  background-color: var(--clr-dark-greenish);
+  padding: 0.3em 0.8em;
+  border-radius: 1000vw;
+
+  transition: filter 100ms ease-in;
+}
+
+.header ol li.active:hover,
+.btn-primary:hover {
+  filter: brightness(120%);
+}
+
+.logo {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: var(--ff-roboto);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.main {
+  display: flex;
+  gap: 1em;
+}
+
+.main div {
+  display: grid;
+  row-gap: 1em;
+  height: min-content;
+  max-width: 30rem;
+}
+
+.main .heading {
+  font-size: 2em;
+  font-weight: 800;
+  font-family: var(--ff-arimo);
+}
+
+.description {
+  font-size: 0.8em;
+  font-family: var(--ff-roboto);
+  line-height: 1.5;
+}
+
+.hero-img {
+  width: 30vw;
+  max-width: 20rem;
+  height: min-content;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: 0 -50%;
+  scale: 2;
+  border-radius: 0.3em;
+}
+
+@media (width < 60rem) {
+  .hero-img {
+    max-width: 100%;
+    width: auto;
+    height: 20vh;
+    bottom: 0;
+    left: 25.5%;
+    translate: 0 -50%;
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.btn-wrapper > a {
+  font-size: 0.7em;
+  font-family: var(--ff-roboto);
+  position: relative;
+  height: min-content;
+}
+
+.btn-wrapper > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8%;
+  height: 0.1em;
+  background-color: var(--clr-dark-greenish);
+  border-radius: 100vw;
+}
+
+.btn-primary {
+  font-size: 0.8em;
+}
